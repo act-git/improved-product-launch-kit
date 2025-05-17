@@ -1,0 +1,17 @@
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/mydb
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
